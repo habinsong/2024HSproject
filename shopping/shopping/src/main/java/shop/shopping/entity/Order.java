@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import shop.shopping.constant.OrderStatus;
+import shop.shopping.entity.constant.OrderStatus;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Table(name="orders")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 

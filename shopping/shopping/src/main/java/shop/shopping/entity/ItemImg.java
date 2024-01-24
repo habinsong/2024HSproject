@@ -2,7 +2,7 @@ package shop.shopping.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import shop.shopping.constant.RepImgYn;
+import shop.shopping.entity.constant.RepImgYn;
 
 @Entity
 @Getter

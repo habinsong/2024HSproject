@@ -1,11 +1,8 @@
 package shop.shopping.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import shop.shopping.constant.Role;
+import shop.shopping.entity.constant.Role;
 
 @Entity
 @Getter

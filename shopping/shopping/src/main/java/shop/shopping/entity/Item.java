@@ -1,16 +1,14 @@
 package shop.shopping.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import shop.shopping.constant.ItemSellStatus;
+import shop.shopping.entity.constant.ItemSellStatus;
 
 @Entity
 @Getter
 public class Item {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "item_id")
     private Long itemId;
 
