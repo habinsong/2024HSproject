@@ -102,6 +102,11 @@ public class MemberController {
 
     }
 
+    @GetMapping("/members/was_paid")
+    public String was_paid() {
+        return "/members/was_paid";
+    }
+
 
 
 
