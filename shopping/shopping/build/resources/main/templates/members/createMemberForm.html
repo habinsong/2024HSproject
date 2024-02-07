@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원가입</title>
+    <link rel="icon" type="image/x-icon" href="/assets/hanshin.ico" />
+</head>
+<body>
+<div class="container">
+    <form action="/members/new" method="post">
+        <div class="form-group">
+            <label for="id">아이디</label>
+            <input type="text" id="id" name="id" placeholder="아이디을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="text" id="password" name="password" placeholder="비밀번호를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="phoneNum">핸드폰 번호</label>
+            <input type="text" id="phoneNum" name="phoneNum" placeholder="핸드폰번호를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="text" id="email" name="email" placeholder="이메일 주소를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="address">배송지 주소</label>
+            <input type="text" id="address" name="address" placeholder="배송지 정보를 입력하세요">
+        </div>
+        <button type="submit">등록</button>
+    </form>
+
+</div>
+
+</body>
+</html>
+

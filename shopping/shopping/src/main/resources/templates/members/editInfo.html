@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="동계방학 프로젝트">
+    <meta name="author" content="송하빈,권용헌,이경주">
+    <title>마이페이지</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/hanshin.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" th:href="@{/css/styles.css}"  />
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script th:src="@{/js/scripts.js}"></script>
+    <style>
+        .custom-table {
+            border-collapse: collapse;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+
+        /* 셀 스타일 */
+        .custom-table td {
+            border-right: none;
+            border-left: none;
+        }
+
+        /* 내부 경계선 스타일 */
+        .custom-table td {
+            border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+        }
+
+        .custom-table td:first-child {
+            border-right: 1px solid rgba(128, 128, 128, 0.5);
+        }
+    </style>
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">oo 쇼핑몰</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">홈</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">주문내역</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">장바구니</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="py-5">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h2>회원정보확인/수정</h2>
+                <table width="80%" class="custom-table">
+                    <tr>
+                        <td>아이디</td>
+                        <td th:text="${session.userinfo.id}">사용자아이디</td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td th:text="${session.userinfo.name}">사용자이름</td>
+                    </tr>
+                    <tr>
+                        <td>핸드폰번호</td>
+                        <td th:text="${session.userinfo.phoneNum}">사용자핸드폰번호</td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호변경</td>
+                        <td>
+                            <form action="#" method="post">
+                            <table>
+                                <tr>
+                                    <td><label for="now">현재 비밀번호</label></td>
+                                    <td><input id="now" type="password" name="current_pwd" size="30" required /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="new">새 비밀번호</label></td>
+                                    <td><input id="new" type="password" name="new_pwd" size="30" required /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="again">비밀번호 다시 확인</label></td>
+                                    <td><input id="again" type="password" name="check_pwd" size="30" required /></td>
+                                </tr>
+                            </table>
+                                <button type="submit" style="margin-left: 143px;">비밀번호 변경</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td th:text="${session.userinfo.email}">사용자이메일</td>
+                    </tr>
+                    <tr>
+                        <td>배송지 주소</td>
+                        <td th:text="${session.userinfo.address}">사용자배송주소</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-dark" style="position: absolute; bottom: 0; width: 100%;">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+</footer>
+
+</body>
+</html>
