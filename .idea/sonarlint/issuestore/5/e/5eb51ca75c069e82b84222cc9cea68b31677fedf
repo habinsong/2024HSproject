@@ -1,0 +1,23 @@
+
+a
+java:S1192$"KDefine a constant instead of duplicating this literal "redirect:/" 3 times.(äÔ¶½
+d
+java:S1192!"NDefine a constant instead of duplicating this literal "loginPassword" 3 times.(ŸôÛ
+k
+java:S3655-"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(Ñ¤‹ÿÿÿÿÿ
+@	java:S106#"+Replace this use of System.out by a logger.(§‘Å
+E	java:S106."+Replace this use of System.out by a logger.(·áêèøÿÿÿÿ
+@	java:S1062"+Replace this use of System.out by a logger.(×ß»œ
+@	java:S106H"+Replace this use of System.out by a logger.(ø×‘¦
+E	java:S106I"+Replace this use of System.out by a logger.(˜¹†£úÿÿÿÿ
+E	java:S106J"+Replace this use of System.out by a logger.(ÿöÙûüÿÿÿÿ
+@	java:S106K"+Replace this use of System.out by a logger.(äâÜä
+E	java:S106L"+Replace this use of System.out by a logger.(˜Í“©øÿÿÿÿ
+@	java:S106M"+Replace this use of System.out by a logger.(èÀ¸ß
+h	java:S100V"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û•©œüÿÿÿÿ
+h	java:S100]"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¥Îÿÿÿÿÿÿ
+c	java:S100j"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€çÃ¡
+S
+java:S1128"=Remove this unused import 'jakarta.servlet.ServletException'.(®Â­Ç
+N
+java:S1128"8Remove this unused import 'org.apache.catalina.Session'.(ç¡÷ñ
