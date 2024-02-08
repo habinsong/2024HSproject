@@ -4,8 +4,11 @@ import jakarta.transaction.Transactional;
 import shop.shopping.controller.MemberLogin;
 import shop.shopping.domain_entity.Member;
 import shop.shopping.repository.MemberRepository;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Optional;
+
 
 @Transactional
 public class MemberService {
@@ -54,6 +57,18 @@ public class MemberService {
                 .orElseThrow(() -> new IllegalStateException("아이디나 비밀번호를 확인해주세요..."));
     }
 
+
+
+    public static class ErrorResponse {
+        private String message;
+
+        public ErrorResponse(String message) {
+            this.message = message;
+        }
+
+        // getter, setter
+    }
+
     //회원정보 수정 기능
     //로그인된id를 통해서 회원의 정보를 반환
     public Optional<Member> userinfo(MemberLogin login) {
@@ -62,3 +77,5 @@ public class MemberService {
 
 
 }
+
+
