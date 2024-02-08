@@ -15,6 +15,31 @@
         <!-- Core theme JS-->
         <script th:src="@{/js/scripts.js}"></script>
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <style>
+            body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+
+            }
+
+            main {
+                flex: 1 0 auto;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                margin-top: 30px; /* 필요에 따라 조정 */
+            }
+        </style>
+
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -32,32 +57,35 @@
             </div>
         </nav>
         <!-- Content section-->
-        <section class="py-5">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <h2>회원정보확인</h2>
-                        <p class="lead" th:text="${session.userinfo.id}+'님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.'">${session.LoginId}님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</p>
-                        <div class="container">
-                            <form action="/members/Mypage" method="post">
-                                <div class="form-group">
-                                    <label for="password">비밀번호</label>
-                                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
-                                    <button type="submit">확인</button>
+
+            <div class="container">
+                <div class="row">
+
+                        <div class="card">
+                            <div class="card-content">
+                                <h2 style="text-align: center;">회원정보 확인</h2>
+                                <p style="text-align: center;" class="lead" th:text="${session.userinfo.id}+'님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.'">${session.LoginId}님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</p>
+                                <div class="container">
+                                    <form action="/members/Mypage" method="post">
+                                        <div class="input-field">
+                                            <label for="password">비밀번호</label>
+                                            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+                                        </div>
+                                        <button class="btn waves-effect waves-light" type="submit">확인</button>
+                                    </form>
+                                    <div th:if="${passwordMismatch}">
+                                        <script th:inline="javascript">
+                                            M.toast({html: '비밀번호가 일치하지 않습니다!', classes: 'red'});
+                                            window.location.href = '/members/Mypage';  // 실패 시 현재 페이지로 리다이렉트
+                                        </script>
+                                    </div>
                                 </div>
-                                <!-- 실패 시 경고 메시지 -->
-                                <div th:if="${passwordMismatch}">
-                                    <script th:inline="javascript">
-                                        alert('비밀번호가 일치하지 않습니다!');
-                                        window.location.href = '/members/Mypage';  // 실패 시 현재 페이지로 리다이렉트
-                                    </script>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+
                 </div>
             </div>
-        </section>
+
         <!-- Footer-->
         <footer class="py-5 bg-dark" style="position: absolute; bottom: 0; width: 100%;">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
