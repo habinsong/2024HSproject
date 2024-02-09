@@ -47,12 +47,12 @@ public class MemberService {
 
     private void validateDuplicateMemberById_login(MemberLogin login) {
         memberRepository.findById(login.getId())
-                .orElseThrow(() -> new IllegalStateException("아이디나 비밀번호를 확인해주세요..."));
+                .orElseThrow(() -> new IllegalStateException("아이디나 비밀번호를 확인해주세요."));
     }
 
     private void validateDuplicateMemberBypassword_login(MemberLogin login) {
         memberRepository.findByPassword(login.getPassword())
-                .orElseThrow(() -> new IllegalStateException("아이디나 비밀번호를 확인해주세요..."));
+                .orElseThrow(() -> new IllegalStateException("아이디나 비밀번호를 확인해주세요."));
     }
 
 

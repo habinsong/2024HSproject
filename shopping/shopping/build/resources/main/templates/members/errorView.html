@@ -22,9 +22,9 @@
 
 <body>
 <div class="card">
-    <h4 class="header red-text text-darken-1">로그인 오류</h4>
+    <h4 class="header red-text text-darken-1">오류</h4>
     <div class="card-content">
-        <p class="black-text">아이디나 비밀번호를 확인해주세요. 입력하신 정보가 정확하지 않습니다.</p>
+        <p th:text="${errorMessage}"></p>
     </div>
     <div class="card-action right-align">
         <button onclick="backFunc()" class="btn waves-effect waves-light red darken-1">뒤로 가기</button>
