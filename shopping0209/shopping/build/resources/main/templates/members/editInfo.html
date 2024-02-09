@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>회원정보 확인 및 수정</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="동계방학 프로젝트">
+    <meta name="author" content="송하빈,권용헌,이경주">
+
+    <link rel="icon" type="image/x-icon" href="/assets/hanshin.ico"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}"  />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/scripts.js}"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">HS 쇼핑몰</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">홈</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">주문내역</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">장바구니</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h2 class="text-primary">회원정보확인/수정</h2>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <td>아이디</td>
+                        <td th:text="${session.userinfo.id}">사용자아이디</td>
+                    </tr>
+                    <tr>
+                        <td>핸드폰번호</td>
+                        <td th:text="${session.userinfo.phoneNum}">사용자핸드폰번호</td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td>
+                            <p th:text="${session.userinfo.name}"></p>
+                            <form action="/members/editName" method="post">
+                                <div class="input-group">
+                                    <input id="editname" type="text" name="name" size="30" required placeholder="변경할 이름을 입력하세요."/>
+                                    <button type="submit" class="btn btn-secondary btn-xs">이름 변경</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td>
+                            <p th:text="${session.userinfo.email}"></p>
+                            <form action="#" method="post">
+                                <div class="input-group">
+                                    <input id="editemail" type="text" name="current_name" size="30" required placeholder="변경할 이메일을 입력하세요."/>
+                                    <button type="submit" class="btn btn-success btn-xs">이메일 변경</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>배송지 주소</td>
+                        <td>
+                            <p th:text="${session.userinfo.address}"></p>
+                            <form action="#" method="post">
+                                <div class="input-group">
+                                    <input id="editaddress" type="text" name="current_name" size="30" required placeholder="변경할 배송지 주소를 입력하세요."/>
+                                    <button type="submit" class="btn btn-danger btn-xs">배송지 변경</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호변경</td>
+                        <td>
+                            <form action="#" method="post">
+                                <table class="table">
+                                    <tr>
+                                        <td><label for="now">현재 비밀번호</label></td>
+                                        <td><input id="now" type="password" name="current_pwd" size="30" required /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="new">새 비밀번호</label></td>
+                                        <td><input id="new" type="password" name="new_pwd" size="30" required /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="again">비밀번호 다시 확인</label></td>
+                                        <td><input id="again" type="password" name="check_pwd" size="30" required /></td>
+                                    </tr>
+                                </table>
+                                <div style="display: flex; justify-content: center; align-items: center; height: 40px;">
+                                    <button type="submit" class="btn btn-primary btn-xs">비밀번호 변경</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; HS 2024</p>
+    </div>
+    <!-- /.container -->
+</footer>
+</body>
+</html>
