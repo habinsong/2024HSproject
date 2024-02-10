@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Materialize CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Materialize JavaScript CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .card {
+            width: 500px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="card">
+    <h4 class="header red-text text-darken-1">심각한 에러!DANGER</h4>
+    <div class="card-content">
+        <p th:text="${errorMessage}"></p>
+    </div>
+    <div class="card-action right-align">
+        <button onclick="backFunc()" class="btn waves-effect waves-light red darken-1">뒤로 가기</button>
+    </div>
+</div>
+
+<script>
+    function backFunc() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>
