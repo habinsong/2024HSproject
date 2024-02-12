@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shopping?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
+  servlet:
+    multipart:
+      maxFileSize: 20MB
+      maxRequestSize: 100MB
+  jpa:
+    database: mysql
+    database-platform:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+itemImgLocation: E:\이경주\쇼핑몰\shopping_01.30\shopping\shopping\itemImgUpload
+uploadPath: file:\\\E:\이경주\쇼핑몰\shopping_01.30\shopping\shopping\itemImgUpload
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
