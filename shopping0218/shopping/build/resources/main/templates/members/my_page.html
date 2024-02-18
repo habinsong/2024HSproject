@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:if="${session.userinfo != null}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="동계방학 프로젝트">
+    <meta name="author" content="송하빈,권용헌,이경주">
+    <title>마이페이지</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/hanshin.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script th:src="@{/js/scripts.js}"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+        #header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 30px; /* 필요에 따라 조정 */
+        }
+    </style>
+
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">HS 쇼핑몰</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">홈</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">마이페이지</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/members/Mypage">회원정보 확인</a></li>
+                        <li>
+                            <hr class="dropdown-divider"/>
+                        </li>
+                        <li><a class="dropdown-item" href="/item/MyItem">내 상품관리</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#!">주문내역</a></li>
+                <li class="nav-item"><a class="nav-link" href="/shoppingCart/was_paid">장바구니</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Content section-->
+
+<div class="container" id="header">
+    <div class="row">
+
+        <div class="card">
+            <div class="card-content">
+                <h2 style="text-align: center;">회원정보 확인</h2>
+                <p style="text-align: center;" class="lead"
+                   th:text="${session.userinfo.id}+'님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.'">${session.LoginId}님의 정보를
+                    안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</p>
+                <div class="container">
+                    <form action="/members/Mypage" method="post">
+                        <div class="input-field">
+                            <label for="password">비밀번호</label>
+                            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+                        </div>
+                        <button class="btn waves-effect waves-light" type="submit">확인</button>
+                    </form>
+                    <div th:if="${passwordMismatch}">
+                        <script th:inline="javascript">
+                            alert('비밀번호가 일치하지 않습니다!');
+                            window.location.href = '/members/Mypage';  // 실패 시 현재 페이지로 리다이렉트
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer-->
+<footer class="py-5 bg-dark" style="position: absolute; bottom: 0; width: 100%;">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; HS 2024</p></div>
+</footer>
+
+</body>
+</html>
