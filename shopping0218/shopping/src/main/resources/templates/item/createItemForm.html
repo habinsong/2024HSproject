@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:if="${session.userinfo != null}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="동계방학 프로젝트">
+    <meta name="author" content="송하빈,권용헌,이경주">
+    <title>상품 등록</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/hanshin.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script th:src="@{/js/scripts.js}"></script>
+
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">HS 쇼핑몰</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">홈</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">마이페이지</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/members/Mypage">회원정보 확인</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="/item/MyItem">내 상품관리</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#!">주문내역</a></li>
+                <li class="nav-item"><a class="nav-link" href="/shoppingCart/was_paid">장바구니</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="container">
+    <form action="/item/create" method="post" enctype="multipart/form-data">
+        <div>상품등록 페이지</div>
+        <hr>
+        <div class="input-form-box">
+            <label for="itemNm">상품 이름</label>
+            <input type="text" id="itemNm" name="itemNm" class="form-control" placeholder="상품이름 입력" required>
+        </div>
+        <div class="input-form-box">
+            <label for="price">가격</label>
+            <input type="text" id="price" name="price" class="form-control" placeholder="가격 입력" required>
+        </div>
+        <div class="input-form-box">
+            <label for="stock">재고</label>
+            <input type="text" id="stock" name="stock" class="form-control" placeholder="재고 입력" required>
+        </div>
+        <div class="input-form-box">
+            <label for="itemDetail">상품 설명</label>
+            <input type="text" id="itemDetail" name="itemDetail" class="form-control" placeholder="상품 설명" required>
+        </div>
+        <div class="input-form-box">
+            <label>판매상태</label>
+            <br>
+            <input type="checkbox" id="sellCheckbox" name="itemSellStatus" value="SELL">
+            <label for="sellCheckbox">SELL</label>
+            <input type="checkbox" id="soldOutCheckbox" name="itemSellStatus" value="SOLD_OUT">
+            <label for="soldOutCheckbox">SOLD_OUT</label>
+        </div>
+        <div class="input-form-box">
+            <label>카테고리</label>
+            <br>
+            <input type="checkbox" id="lifeItem" name="kategorie" value="생필품">
+            <label for="lifeItem">생필품</label>
+            <input type="checkbox" id="electronicProducts" name="kategorie" value="전자제품">
+            <label for="electronicProducts">전자제품</label>
+            <input type="checkbox" id="sportItem" name="kategorie" value="스포츠용품">
+            <label for="sportItem">스포츠용품</label>
+        </div>
+        <div class="input-form-box">
+            <label for="itemImgFile">상품 이미지</label>
+            <input type="file" id="itemImgFile" name="itemImgFile" class="form-control" multiple required>
+        </div>
+        <div class="button-login-box">
+            <button type="submit" class="btn btn-primary btn-xs" style="width:100%">상품 등록</button>
+        </div>
+    </form>
+</div>
+
+<!-- Footer-->
+<footer class="py-5 bg-dark" style="position: absolute; bottom: 0; width: 100%;">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; HS 2024</p></div>
+</footer>
+
+</body>
+</html>
