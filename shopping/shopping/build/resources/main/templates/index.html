@@ -126,6 +126,9 @@
                 <a href="#item1" class="list-group-item">인기상품</a>
                 <a href="#item2" class="list-group-item">생필품</a>
                 <a href="#item3" class="list-group-item">전자 제품</a>
+                <a href="#item4" class="list-group-item">스포츠 용품</a>
+                <a href="#item5" class="list-group-item">식품</a>
+                <a href="#item6" class="list-group-item">학용품</a>
             </div>
 
         </div>
@@ -214,6 +217,69 @@
                 </div>
 
             </div>
+
+            <div id="item4" class="row">
+                <h1 style="text-align: center;" class="my-4">스포츠용품</h1>
+
+                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.equals('스포츠용품')}">
+                    <div class="card h-100">
+                        <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}"><img class="card-img-top" th:src='@{${entry.value}}' alt="사진을 불러오는데 오류가 발생했습니다." style="width: 100%; height: 150px;"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}" th:text="${entry.key.itemNm}">상품 이름</a>
+                            </h4>
+                            <h5 th:text="${entry.key.price} + '원'">가격</h5>
+                            <p class="card-text" th:text="${entry.key.itemDetail}">상품 설명</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="item5" class="row">
+                <h1 style="text-align: center;" class="my-4">식품</h1>
+
+                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.equals('식품')}">
+                    <div class="card h-100">
+                        <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}"><img class="card-img-top" th:src='@{${entry.value}}' alt="사진을 불러오는데 오류가 발생했습니다." style="width: 100%; height: 150px;"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}" th:text="${entry.key.itemNm}">상품 이름</a>
+                            </h4>
+                            <h5 th:text="${entry.key.price} + '원'">가격</h5>
+                            <p class="card-text" th:text="${entry.key.itemDetail}">상품 설명</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="item6" class="row">
+                <h1 style="text-align: center;" class="my-4">학용품</h1>
+
+                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.equals('학용품')}">
+                    <div class="card h-100">
+                        <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}"><img class="card-img-top" th:src='@{${entry.value}}' alt="사진을 불러오는데 오류가 발생했습니다." style="width: 100%; height: 150px;"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}" th:text="${entry.key.itemNm}">상품 이름</a>
+                            </h4>
+                            <h5 th:text="${entry.key.price} + '원'">가격</h5>
+                            <p class="card-text" th:text="${entry.key.itemDetail}">상품 설명</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <!-- /.row -->
 
         </div>
@@ -257,3 +323,4 @@
 </body>
 
 </html>
+

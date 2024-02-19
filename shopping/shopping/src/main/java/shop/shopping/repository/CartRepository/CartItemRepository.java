@@ -33,11 +33,10 @@ public class CartItemRepository {
     }
 
     //현재 로그인한 회원의 Cart 엔티티를 찾기 위해
-    public CartItem findByCartIdAndItemId(Long cartId, Long itemId) {
-        return em.createQuery("SELECT c FROM CartItem c WHERE c.cart.id = :cartId AND c.item.id = :itemId", CartItem.class)
+    public List<CartItem> findByCartId(Long cartId) {
+        return em.createQuery("SELECT c FROM CartItem c WHERE c.cart.id = :cartId", CartItem.class)
                 .setParameter("cartId", cartId)
-                .setParameter("itemId", itemId)
-                .getSingleResult();
+                .getResultList();
     }
 
     public List<CartDetailDto> findCartDetailDtoList(Long cartId) {
