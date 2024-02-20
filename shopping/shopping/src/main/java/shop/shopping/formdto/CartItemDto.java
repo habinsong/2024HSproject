@@ -4,13 +4,29 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.modelmapper.ModelMapper;
+import shop.shopping.domain_entity.Cart;
+import shop.shopping.domain_entity.CartItem;
+import shop.shopping.domain_entity.Item;
 
 @Getter
 @Setter
 public class CartItemDto {
-    @NotNull(message = "상품 아이디는 필수 입력 값 입니다.")
+    private static ModelMapper modelMapper = new ModelMapper();
+
+    @NotNull
     private Long itemId;
 
-    @Min(value = 1, message = "최소 1개 이상 담아주세요")
+    @Min(value = 1)
     private int count;
+
+    @NotNull
+    private Cart cart;
+
+    public CartItem CreateCartItem(){
+        return modelMapper.map(this, CartItem.class);
+    }
+
+
+
 }

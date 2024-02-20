@@ -43,16 +43,21 @@
         #margin2 {
             margin-top: 20px;
         }
+        #a1 {
+            & a:link { color: white; text-decoration: none;}
+            & a:visited { color: white; text-decoration: none;}
+            & a:hover { color: white; text-decoration: underline;}
+        }
+        #a2 {
+            & a:link { color: white; text-decoration: none;}
+            & a:visited { color: white; text-decoration: none;}
+            & a:hover { color: white; text-decoration: underline;}
+        }
 
 
     </style>
 
-    <style type="text/css">
-        a:link { color: white; text-decoration: none;}
-        a:visited { color: white; text-decoration: none;}
-        a:hover { color: white; text-decoration: underline;}
 
-    </style>
 
 </head>
 <body>
@@ -74,7 +79,7 @@
                         <li><a class="dropdown-item" href="/item/MyItem">내 상품관리</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#!">주문내역</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Orders/order">주문내역</a></li>
                 <li class="nav-item"><a class="nav-link" href="/shoppingCart/was_paid">장바구니</a></li>
             </ul>
         </div>
@@ -89,7 +94,7 @@
                     <div style="align-items: center;">
                         <span style="text-align: center;">상품을 등록합니다.</span>
                     </div>
-                    <button class="btn waves-effect waves-light"><a href="/item/new">등록</a></button>
+                    <button id="a1" class="btn waves-effect waves-light"><a href="/item/new">등록</a></button>
                 </div>
             </div>
         </div>
@@ -101,7 +106,7 @@
                     <div style="align-items: center;">
                         <span style="text-align: center;">상품을 수정합니다.</span>
                     </div>
-                    <button class="btn waves-effect waves-light"><a href="/item/itemUpdate">수정</a></button>
+                    <button id="a2" class="btn waves-effect waves-light"><a href="/item/itemUpdate">수정</a></button>
                 </div>
             </div>
         </div>
@@ -119,5 +124,3 @@
 
 </body>
 </html>
-
-

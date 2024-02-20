@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import shop.shopping.domain_entity.Cart;
 import shop.shopping.domain_entity.CartItem;
 import shop.shopping.domain_entity.Item;
@@ -26,7 +27,6 @@ import java.util.Optional;
 public class CartService {
 
     private final ItemRepository itemRepository;
-    private final JpaMemberRepository jpaMemberRepository;
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
 
@@ -40,30 +40,26 @@ public class CartService {
         cartRepository.delete(cart);
     }
 
-//    public Long addCart(CartItemDto cartItemDto, String id) {
-//        //장바구니에 담을 상품 조회, 로그인한 회원 조회
-//        Item item = itemRepository.findOne(cartItemDto.getItemId()).orElseThrow(EntityNotFoundException::new);
-//        Member member = jpaMemberRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-//
-//        //현재 로그인한 회원 장바구니 조회
-//        Cart cart = cartRepository.findByMemberId(member.getId());
-//        if(cart == null) {
-//            Cart.createCart(member);
-//            cartRepository.save(cart);
-//        }
-//
-//        //상품이 들어가 있는지 획인 후 있으면 + 없으면 저장
-//        CartItem savedCartItem = cartItemRepository.findByCartIdAndItemId(cart.getCartId(), item.getItemId());
-//
-//        if(savedCartItem != null){
-//            savedCartItem.addCount(cartItemDto.getCount());
-//            return savedCartItem.getCartItemId();
-//        } else {
-//            CartItem cartItem = CartItem.createCartItem(cart, item, cartItemDto.getCount());
-//            cartItemRepository.save(cartItem);
-//            return cartItem.getCartItemId();
-//        }
-//    }
+    public Cart findById(String id) {
+        return cartRepository.findByMemberId(id);
+    }
+
+    public void addCart(CartItemDto cartItemDto, Item findItem) {
+        CartItem cartItem = cartItemDto.CreateCartItem();
+        int computeStock = findItem.getStock() - cartItem.getCount();
+        findItem.setStock(computeStock);
+        Optional<CartItem> existingCartItem = cartItemRepository.findByCartIdItemId(cartItem.getCart(), cartItem.getItem());
+        if(existingCartItem.isPresent()) {
+            CartItem c = existingCartItem.get();
+            c.setCount(c.getCount()+cartItem.getCount());
+            cartItemRepository.save(c);
+            itemRepository.save(findItem);
+        }else {
+            cartItemRepository.save(cartItem);
+            itemRepository.save(findItem);
+        }
+
+    }
 
     //카트 조회
     public List<Item> getCartList(Member member) {
@@ -71,31 +67,23 @@ public class CartService {
         List<CartItem> cartItems = cartItemRepository.findByCartId(cart.get().getCartId());
         List<Item> userCartItems = new ArrayList<>();
         for (CartItem cartItem : cartItems) {
-                Long itemId = cartItem.getItem().getItemId();
-                Optional<Item> item = itemRepository.findOne(itemId);
-                userCartItems.add(item.get());
+            Long itemId = cartItem.getItem().getItemId();
+            Optional<Item> item = itemRepository.findOne(itemId);
+            item.get().setStock(cartItem.getCount());
+            userCartItems.add(item.get());
         }
         return userCartItems;
     }
 
-    //update
-    public void updateCartItemCount(Long cartItemId, int count){
-
-        CartItem cartItem = cartItemRepository.findById(cartItemId)
-                .orElseThrow(EntityNotFoundException::new);
-
-        cartItem.updateCount(count);
+    public List<CartItem> getCartItems(Member member) {
+        Optional<Cart> cart = cartRepository.findByMember(member);
+        return cartItemRepository.findByCartId(cart.get().getCartId());
     }
 
     //delete
-    public void deleteCartItem(Long cartItemId) {
-
-        CartItem cartItem = cartItemRepository.findById(cartItemId)
-                .orElseThrow(EntityNotFoundException::new);
-
-        cartItemRepository.delete(cartItem);
+    public void removeItem(Cart cart) {
+        cartItemRepository.remove(cart);
     }
-
 
 
 }

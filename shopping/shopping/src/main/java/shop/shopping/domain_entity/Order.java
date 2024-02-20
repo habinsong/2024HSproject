@@ -15,7 +15,6 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name="orders")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
     @Id @GeneratedValue
@@ -31,15 +30,11 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus; // 주문상태[ORDER, CANCEL]
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems = new ArrayList<>();
-
-    public Order createOrder(Member member, LocalDateTime localDateTime, OrderStatus orderStatus, List<OrderItem> orderItems) {
+    public static Order createOrder(Member member, LocalDateTime localDateTime, OrderStatus orderStatus) {
         Order order = new Order();
         order.setMember(member);
         order.setOrderDate(localDateTime);
         order.setOrderStatus(orderStatus);
-        order.setOrderItems(orderItems);
         return order;
     }
 

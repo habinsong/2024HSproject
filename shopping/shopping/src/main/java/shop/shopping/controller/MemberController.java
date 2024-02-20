@@ -204,6 +204,7 @@ public class MemberController {
     public String DELETEINFO(HttpSession session, Model model) {
         Member userinfo = (Member) session.getAttribute("userinfo");
         String Id = userinfo.getId();
+        cartService.removeItem(cartService.findById(Id));
         cartService.deleteCart(Id);
         memberService.deleteMember(Id);
         model.addAttribute("successDelete", true);

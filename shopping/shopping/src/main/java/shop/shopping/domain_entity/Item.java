@@ -29,24 +29,6 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; //판매 상태[SELL, SOLD_OUT]
 
-    /**
-     * stock 증가
-     */
-    public void addStock(int quantity) {
-        this.stock += quantity;
-    }
-
-    /**
-     *stock 감소
-     */
-    public void removeStock(int quantity) {
-        int resultStock = this.stock - quantity;
-
-        if(resultStock < 0) {
-            throw new NotEnoughStockException("재고 수량이 0이하 입니다.");
-        }
-        this.stock = resultStock;
-    }
 
 
 }

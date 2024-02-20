@@ -56,7 +56,7 @@
                     <a class="nav-link" href="/members/login" onclick="alert('로그인 후 이용해주세요')">주문 내역</a>
                 </li>
                 <li class="nav-item" th:if="${session.userinfo != null}">
-                    <a class="nav-link" href="#">주문 내역</a>
+                    <a class="nav-link" href="/Orders/order">주문 내역</a>
                 </li>
                 <li class="nav-item" th:if="${session.userinfo == null}">
                     <a class="nav-link" href="/members/login" onclick="alert('로그인 후 이용해주세요')">장바구니</a>
@@ -91,9 +91,9 @@
                 </div>
                 <p class="lead" th:text="${item.getItemDetail()}"></p>
                 <div class="d-flex">
-                    <form class ="from1" th:action="@{/item/addCart/{itemId}(itemId=${item.getItemId()})}">
+                    <form class ="from1" th:action="@{/item/addCart/{itemId}(itemId=${item.getItemId()})}" method="post">
                         <div style="display: flex; align-items: center;">
-                            <input class="form-control text-center me-3" name="stock" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
+                            <input class="form-control text-center me-3" name="count" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
                             <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
                                 장바구니에 추가
@@ -101,12 +101,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="d-flex">
-
-                </div>
-
-
-
+                <div class="d-flex"></div>
             </div>
         </div>
     </div>

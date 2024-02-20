@@ -99,7 +99,7 @@
                     <a class="nav-link" href="/" onclick="alert('로그인 후 이용해주세요')">주문 내역</a>
                 </li>
                 <li class="nav-item" th:if="${session.userinfo != null}">
-                    <a class="nav-link" href="#">주문 내역</a>
+                    <a class="nav-link" href="/Orders/order">주문 내역</a>
                 </li>
                 <li class="nav-item" th:if="${session.userinfo == null}">
                     <a class="nav-link" href="/" onclick="alert('로그인 후 이용해주세요')">장바구니</a>
@@ -179,7 +179,7 @@
             <div id="item2" class="row">
                 <h1 style="text-align: center;" class="my-4">생필품</h1>
 
-                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.equals('생필품')}">
+                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.contains('생필품')}">
                     <div class="card h-100">
                         <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}"><img class="card-img-top" th:src='@{${entry.value}}' alt="사진을 불러오는데 오류가 발생했습니다." style="width: 100%; height: 150px;"></a>
                         <div class="card-body">
@@ -200,7 +200,7 @@
             <div id="item3" class="row">
                 <h1 style="text-align: center;" class="my-4">전자제품</h1>
 
-                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.equals('전자제품')}">
+                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.contains('전자제품')}">
                     <div class="card h-100">
                         <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}"><img class="card-img-top" th:src='@{${entry.value}}' alt="사진을 불러오는데 오류가 발생했습니다." style="width: 100%; height: 150px;"></a>
                         <div class="card-body">
@@ -221,7 +221,7 @@
             <div id="item4" class="row">
                 <h1 style="text-align: center;" class="my-4">스포츠용품</h1>
 
-                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.equals('스포츠용품')}">
+                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.contains('스포츠용품')}">
                     <div class="card h-100">
                         <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}"><img class="card-img-top" th:src='@{${entry.value}}' alt="사진을 불러오는데 오류가 발생했습니다." style="width: 100%; height: 150px;"></a>
                         <div class="card-body">
@@ -242,7 +242,7 @@
             <div id="item5" class="row">
                 <h1 style="text-align: center;" class="my-4">식품</h1>
 
-                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.equals('식품')}">
+                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.contains('식품')}">
                     <div class="card h-100">
                         <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}"><img class="card-img-top" th:src='@{${entry.value}}' alt="사진을 불러오는데 오류가 발생했습니다." style="width: 100%; height: 150px;"></a>
                         <div class="card-body">
@@ -263,7 +263,7 @@
             <div id="item6" class="row">
                 <h1 style="text-align: center;" class="my-4">학용품</h1>
 
-                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.equals('학용품')}">
+                <div class="col-lg-4 col-md-6 mb-4" th:each="entry : ${itemUrlMap}" th:if="${entry.key.kategorie.contains('학용품')}">
                     <div class="card h-100">
                         <a th:href="@{/item/item_info/{itemId}(itemId=${entry.key.itemId})}"><img class="card-img-top" th:src='@{${entry.value}}' alt="사진을 불러오는데 오류가 발생했습니다." style="width: 100%; height: 150px;"></a>
                         <div class="card-body">

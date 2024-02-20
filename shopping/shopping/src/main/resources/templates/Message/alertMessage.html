@@ -44,6 +44,24 @@
         window.location.href = '/item/itemUpdate';
     </script>
 </div>
+<div th:if="${successAddCartItem}">
+    <script th:inline="javascript">
+        alert("장바구니에 추가되었습니다.");
+        window.history.back()
+    </script>
+</div>
+<div th:if="${removeItem}">
+    <script th:inline="javascript">
+        alert("장바구니를 비웠습니다.");
+        window.history.back()
+    </script>
+</div>
+<div th:if="${successOrder}">
+    <script th:inline="javascript">
+        alert("주문이 완료되었습니다.");
+        window.history.back()
+    </script>
+</div>
 
 </body>
 </html>

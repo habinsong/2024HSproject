@@ -4,10 +4,14 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import shop.shopping.domain_entity.constant.OrderStatus;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter
 public class OrderItem {
 
     @Id @GeneratedValue
@@ -24,4 +28,15 @@ public class OrderItem {
 
     private int orderPrice;
     private int count;
+
+    public static OrderItem createOrderItem(Item item, Order order, int orderPrice, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrder(order);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+        return orderItem;
+    }
+
+
 }
