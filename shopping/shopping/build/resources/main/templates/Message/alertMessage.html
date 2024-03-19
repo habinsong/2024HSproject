@@ -50,6 +50,12 @@
         window.history.back()
     </script>
 </div>
+<div th:if="${failedAddCartItem}">
+    <script th:inline="javascript">
+        alert("장바구니에 추가할 수 없습니다.");
+        window.history.back()
+    </script>
+</div>
 <div th:if="${removeItem}">
     <script th:inline="javascript">
         alert("장바구니를 비웠습니다.");
